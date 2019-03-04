@@ -55,6 +55,7 @@
 		60D79316217E39D90080F428 /* Targeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D79315217E39D90080F428 /* Targeting.swift */; };
 		60D79318217F7F3E0080F428 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D79317217F7F3E0080F428 /* Constants.swift */; };
 		60EE7B0621F26329000B12A8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EE7B0521F26329000B12A8 /* Utils.swift */; };
+		D1C2AC13222D2042003A0E87 /* AdformAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C2AC12222D2042003A0E87 /* AdformAdapter.swift */; };
 		F5400CB22209E8210018F6B1 /* responseInvalidResponseWithoutCacheId.json in Resources */ = {isa = PBXBuildFile; fileRef = F5400CB12209E8210018F6B1 /* responseInvalidResponseWithoutCacheId.json */; };
 		F5400CB42209E9B40018F6B1 /* PrebidServerOneBidFromAppNexusOneBidFromRubicon.json in Resources */ = {isa = PBXBuildFile; fileRef = F5400CB32209E9B40018F6B1 /* PrebidServerOneBidFromAppNexusOneBidFromRubicon.json */; };
 		F5400CB62209EBF50018F6B1 /* PrebidServerValidResponseAppNexusNoCacheIdAndRunbiconHasCacheId.json in Resources */ = {isa = PBXBuildFile; fileRef = F5400CB52209EBF50018F6B1 /* PrebidServerValidResponseAppNexusNoCacheIdAndRunbiconHasCacheId.json */; };
@@ -135,6 +136,7 @@
 		97EE4C6422035DD1006FEFA2 /* responseInvalidConfigId.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = responseInvalidConfigId.json; sourceTree = "<group>"; };
 		97EE4C6722035E57006FEFA2 /* responseIncorrectFormat.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = responseIncorrectFormat.json; sourceTree = "<group>"; };
 		97F29999220056D10072E0C0 /* BannerAdUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdUnitTests.swift; sourceTree = "<group>"; };
+		D1C2AC12222D2042003A0E87 /* AdformAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdformAdapter.swift; sourceTree = "<group>"; };
 		F5400CB12209E8210018F6B1 /* responseInvalidResponseWithoutCacheId.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = responseInvalidResponseWithoutCacheId.json; sourceTree = "<group>"; };
 		F5400CB32209E9B40018F6B1 /* PrebidServerOneBidFromAppNexusOneBidFromRubicon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PrebidServerOneBidFromAppNexusOneBidFromRubicon.json; sourceTree = "<group>"; };
 		F5400CB52209EBF50018F6B1 /* PrebidServerValidResponseAppNexusNoCacheIdAndRunbiconHasCacheId.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PrebidServerValidResponseAppNexusNoCacheIdAndRunbiconHasCacheId.json; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				6062B1AB21878CFB00CE1BA3 /* AdUnit.swift */,
 				6062B1AD2188783B00CE1BA3 /* InterstitialAdUnit.swift */,
 				60EE7B0521F26329000B12A8 /* Utils.swift */,
+				D1C2AC12222D2042003A0E87 /* AdformAdapter.swift */,
 			);
 			path = AdUnits;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				6062B1B021889EC600CE1BA3 /* Global.swift in Sources */,
 				607B047A2194AC79000C0879 /* BidResponse.swift in Sources */,
 				6062B1AE2188783B00CE1BA3 /* InterstitialAdUnit.swift in Sources */,
+				D1C2AC13222D2042003A0E87 /* AdformAdapter.swift in Sources */,
 				60D79310217E27960080F428 /* Host.swift in Sources */,
 				60D79318217F7F3E0080F428 /* Constants.swift in Sources */,
 				6062B1A421835DF300CE1BA3 /* Logging.swift in Sources */,
