@@ -21,6 +21,8 @@ import GoogleMobileAds
 
 import MoPub
 
+import AdformAdvertising
+
 class InterstitialViewController: UIViewController, GADInterstitialDelegate, MPInterstitialAdControllerDelegate {
     
     @IBOutlet var adServerLabel: UILabel!
@@ -32,6 +34,8 @@ class InterstitialViewController: UIViewController, GADInterstitialDelegate, MPI
     var dfpInterstitial: DFPInterstitial!
     
     var mopubInterstitial: MPInterstitialAdController!
+
+    var adOverlay: AFAdOverlay?
     
     
     override func viewDidLoad() {
@@ -41,15 +45,14 @@ class InterstitialViewController: UIViewController, GADInterstitialDelegate, MPI
         
         Prebid.shared.prebidServerAccountId = "bfa84af2-bd16-4d35-96ad-31c6bb888df0"
         let interstitialUnit = InterstitialAdUnit(configId: "625c6125-f19e-4d5b-95c5-55501526b2a4")
-        
+
+        print("entered \(adServerName) loop" )
         if(adServerName == "DFP"){
-            print("entered \(adServerName) loop" )
             loadDFPInterstitial(adUnit: interstitialUnit)
-            
         } else if (adServerName == "MoPub"){
-            print("entered \(adServerName) loop" )
             loadMoPubInterstitial(adUnit: interstitialUnit)
-            
+        } else if adServerName == "Adform" {
+            loadAdformOverlay(adUnit: interstitialUnit)
         }
     }
     
@@ -84,6 +87,18 @@ class InterstitialViewController: UIViewController, GADInterstitialDelegate, MPI
             self.mopubInterstitial.loadAd()
         }
         
+    }
+
+    func loadAdformOverlay(adUnit: AdUnit) {
+        let adOverlay = AFAdOverlay(masterTagID: 574699)
+        adOverlay.delegate = self
+        self.adOverlay = adOverlay
+
+        adUnit.fetchDemand(adObject: adOverlay) { (resultCode) in
+            print("Prebid demand fetch for mopub \(resultCode)")
+
+            adOverlay.show(from: self)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -124,3 +139,6 @@ class InterstitialViewController: UIViewController, GADInterstitialDelegate, MPI
     
 }
 
+extension InterstitialViewController: AFAdOverlayDelegate {
+
+}

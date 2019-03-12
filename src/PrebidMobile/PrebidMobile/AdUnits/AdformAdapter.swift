@@ -13,7 +13,7 @@ class AdformAdapter {
 
     // MARK: - Constants
 
-    private let hbPrice = "hb_price"
+    private let hbPb = "hb_pb"
     private let hbBidder = "hb_bidder"
     private let hbCacheId = "hb_cache_id"
 
@@ -70,17 +70,15 @@ class AdformAdapter {
     ///   - bidResponse: A bid response containing custom keywords with header bidding parameters.
     /// - Returns: Returns true if HB parameters were set successfully, otherwise false.
     func validateAndAttachKeywords(to adObject: AnyObject, with className: String, from bidResponse: BidResponse) -> Bool {
-        let adObjectName = String(describing: adObject)
-
-        guard adObjectName.hasSuffix(adformAdInlineName)
-            || adObjectName.hasSuffix(adformAdHesionName)
-            || adObjectName.hasSuffix(adformAdInterstitialName)
-            || adObjectName.hasSuffix(adformAdOverlayName) else {
+        guard className.hasSuffix(adformAdInlineName)
+            || className.hasSuffix(adformAdHesionName)
+            || className.hasSuffix(adformAdInterstitialName)
+            || className.hasSuffix(adformAdOverlayName) else {
                 return false
         }
 
         // Set price.
-        if let price = bidResponse.customKeywords[hbPrice], let priceValue = Float(price) {
+        if let price = bidResponse.customKeywords[hbPb], let priceValue = Float(price) {
             adObject.setValue(priceValue, forKey: pricePropertyName)
         }
 
@@ -95,7 +93,7 @@ class AdformAdapter {
         if let value = bidResponse.customKeywords[hbCacheId], adObject.responds(to: addCustomParameterForKeySelector) {
             _ = adObject.perform(addCustomParameterForKeySelector, with: value, with: hbCacheId)
         }
-
+        
         return true
     }
 

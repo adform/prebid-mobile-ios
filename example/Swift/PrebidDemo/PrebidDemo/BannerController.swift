@@ -21,6 +21,8 @@ import GoogleMobileAds
 
 import MoPub
 
+import AdformAdvertising
+
 class BannerController: UIViewController, GADBannerViewDelegate, MPAdViewDelegate {
     
    @IBOutlet var appBannerView: UIView!
@@ -34,6 +36,8 @@ class BannerController: UIViewController, GADBannerViewDelegate, MPAdViewDelegat
     var dfpBanner: DFPBannerView!
     
     var mopubBanner: MPAdView?
+
+    var adInline: AFAdInline?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,15 +51,14 @@ class BannerController: UIViewController, GADBannerViewDelegate, MPAdViewDelegat
         
         let bannerUnit = BannerAdUnit(configId: "6ace8c7d-88c0-4623-8117-75bc3f0a2e45", size: CGSize(width: 300, height: 250))
         bannerUnit.setAutoRefreshMillis(time: 35000)
-        
+
+        print("entered \(adServerName) loop" )
         if(adServerName == "DFP"){
-            print("entered \(adServerName) loop" )
             loadDFPBanner(bannerUnit: bannerUnit)
-            
         } else if (adServerName == "MoPub"){
-            print("entered \(adServerName) loop" )
             loadMoPubBanner(bannerUnit: bannerUnit)
-            
+        } else if adServerName == "Adform" {
+            loadAdformBanner(bannerUnit: bannerUnit)
         }
     }
     
@@ -97,6 +100,21 @@ class BannerController: UIViewController, GADBannerViewDelegate, MPAdViewDelegat
         }
         
     }
+
+    func loadAdformBanner(bannerUnit: AdUnit) {
+        print("Adform Advertising SDK version: \(AdformSDK.sdkVersion())")
+        let adInline = AFAdInline(masterTagId: 557409, presenting: self, adSize: CGSize(width: 300, height: 250))
+        adInline.delegate = self
+        self.adInline = adInline
+        adInline.backgroundColor = UIColor.yellow
+        appBannerView.addSubview(adInline)
+
+        bannerUnit.fetchDemand(adObject: adInline) { (resultCode) in
+            print("Prebid demand fetch for adform \(resultCode)")
+
+            adInline.loadAd()
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -131,3 +149,14 @@ class BannerController: UIViewController, GADBannerViewDelegate, MPAdViewDelegat
 
 }
 
+extension BannerController: AFAdInlineDelegate {
+
+    func adInlineDidLoadAd(_ adInline: AFAdInline) {
+        print("adViewDidReceiveAd")
+    }
+
+    func adInlineDidFail(toLoadAd adInline: AFAdInline, withError error: Error) {
+        print("adView:didFailToReceiveAdWithError: \(error)")
+    }
+
+}

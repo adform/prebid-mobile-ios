@@ -348,7 +348,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-PrebidDemo/Pods-PrebidDemo-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-PrebidDemo/Pods-PrebidDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/mopub-ios-sdk/MoPub.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -357,7 +357,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PrebidDemo/Pods-PrebidDemo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PrebidDemo/Pods-PrebidDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CECAE1B09BD5EF94E75FFE8B /* [CP] Check Pods Manifest.lock */ = {
